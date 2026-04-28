@@ -1,0 +1,33 @@
+@use "./colors.scss" as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  transition: background-color 0.3s ease;
+  width: 100%;
+
+  &.scrolled {
+    background-color: $color-header-footer;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-text;
+
+    img {
+      height: 50px;
+      width: 50px;
+    }
+    h1 {
+      font-family: MontserratRegular;
+      font-size: 23px;
+    }
+  }
+  .navigation {
+    display: none;
+  }
+}

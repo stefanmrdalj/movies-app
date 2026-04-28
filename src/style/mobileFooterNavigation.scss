@@ -1,0 +1,20 @@
+@use "./colors.scss" as *;
+
+.footerNavigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 15px;
+  background-color: $color-header-footer;
+  box-sizing: border-box;
+  a {
+    text-decoration: none;
+    font-family: MontserratRegular;
+    color: $color-text;
+  }
+}
