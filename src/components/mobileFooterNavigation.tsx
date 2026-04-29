@@ -1,14 +1,18 @@
 import { navigationLinks } from "../config/navigationLinks";
-import { Link } from "react-router-dom";
 import "../style/mobileFooterNavigation.scss";
+import { NavLink } from "react-router-dom";
 
 const MobileFooterNavigation = () => {
   return (
     <div className="footerNavigation">
       {navigationLinks.map((link) => (
-        <Link key={link.name} to={link.path}>
+        <NavLink
+          className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+          key={link.name}
+          to={link.path}
+        >
           {link.name}
-        </Link>
+        </NavLink>
       ))}
     </div>
   );

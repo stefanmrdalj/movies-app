@@ -12,9 +12,14 @@
   padding: 20px 15px;
   background-color: $color-header-footer;
   box-sizing: border-box;
-  a {
+  .nav-link {
     text-decoration: none;
     font-family: MontserratRegular;
     color: $color-text;
+    padding-bottom: 3px;
+  }
+
+  .nav-link.active {
+    border-bottom: 2px solid $color-red;
   }
 }
