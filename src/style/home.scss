@@ -1,6 +1,10 @@
+@use "./colors.scss" as *;
+
 .home {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  overflow-y: auto;
+  background-color: $color-background;
+  min-height: 100vh;
+  padding-bottom: 70px;
+  box-sizing: border-box;
 }

@@ -51,6 +51,51 @@ class MoviesAndTvShowsService {
       poster_path: tvShows.poster_path ? `${IMG_BASE}${tvShows.poster_path}` : "undefined",
     }));
   }
+  async getAllMovies(page: number = 1): Promise<Movie[]> {
+    const [error, response] = await to(moviesAndTvShowsRepository.getAllMovies(page));
+
+    if (error) {
+      console.error("Error fetching all movies: ", error);
+      return [];
+    }
+    return response.data.results.map((movie) => ({
+      ...movie,
+      poster_path: movie.poster_path ? `${IMG_BASE}${movie.poster_path}` : "undefined",
+    }));
+  }
+  async getAllTvShows(page: number = 1): Promise<TvShow[]> {
+    const [error, response] = await to(moviesAndTvShowsRepository.getAllTvShows(page));
+    if (error) {
+      console.error("Error fetching all TV shows: ", error);
+      return [];
+    }
+    return response.data.results.map((tvShow) => ({
+      ...tvShow,
+      poster_path: tvShow.poster_path ? `${IMG_BASE}${tvShow.poster_path}` : "undefined",
+    }));
+  }
+  async searchMovies(query: string, page: number = 1): Promise<Movie[]> {
+    const [error, response] = await to(moviesAndTvShowsRepository.searchMovies(query, page));
+    if (error) {
+      console.error("Error searching movies: ", error);
+      return [];
+    }
+    return response.data.results.map((movie) => ({
+      ...movie,
+      poster_path: movie.poster_path ? `${IMG_BASE}${movie.poster_path}` : "undefined",
+    }));
+  }
+  async searchTvShows(query: string, page: number = 1): Promise<TvShow[]> {
+    const [error, response] = await to(moviesAndTvShowsRepository.searchTvShows(query, page));
+    if (error) {
+      console.error("Error searching TV shows: ", error);
+      return [];
+    }
+    return response.data.results.map((tv) => ({
+      ...tv,
+      poster_path: tv.poster_path ? `${IMG_BASE}${tv.poster_path}` : "undefined",
+    }));
+  }
 }
 
 export const moviesAndTvShowsService = new MoviesAndTvShowsService();

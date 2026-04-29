@@ -7,16 +7,24 @@ import { useEffect, useState } from "react";
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
 
+  // useEffect(() => {
+  //   const homeElement = document.querySelector(".home");
+  //   if (!homeElement) return;
+  //   const onScroll = () => {
+  //     setScrolled(homeElement.scrollTop > 50);
+  //   };
+  //   homeElement.addEventListener("scroll", onScroll);
+  //   return () => {
+  //     homeElement.removeEventListener("scroll", onScroll);
+  //   };
+  // }, []);
   useEffect(() => {
-    const homeElement = document.querySelector(".home");
-    if (!homeElement) return;
     const onScroll = () => {
-      setScrolled(homeElement.scrollTop > 50);
+      setScrolled(window.scrollY > 50);
     };
-    homeElement.addEventListener("scroll", onScroll);
-    return () => {
-      homeElement.removeEventListener("scroll", onScroll);
-    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
