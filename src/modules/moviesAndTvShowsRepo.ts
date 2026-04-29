@@ -23,6 +23,26 @@ class MoviesAndTvShowsRepo {
       params: { page },
     });
   }
+  getAllMovies(page: number = 1): Promise<AxiosResponse<MoviesResponse>> {
+    return axiosInstance.get("/discover/movie", {
+      params: { page },
+    });
+  }
+  getAllTvShows(page: number = 1): Promise<AxiosResponse<TvShowsResponse>> {
+    return axiosInstance.get("/discover/tv", {
+      params: { page },
+    });
+  }
+  searchMovies(query: string, page: number = 1): Promise<AxiosResponse<MoviesResponse>> {
+    return axiosInstance.get("/search/movie", {
+      params: { query, page },
+    });
+  }
+  searchTvShows(query: string, page: number = 1): Promise<AxiosResponse<TvShowsResponse>> {
+    return axiosInstance.get("/search/tv", {
+      params: { query, page },
+    });
+  }
 }
 
 export const moviesAndTvShowsRepository = new MoviesAndTvShowsRepo();
