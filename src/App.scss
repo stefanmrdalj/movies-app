@@ -1,0 +1,19 @@
+@use "./style/colors.scss" as *;
+
+@font-face {
+  font-family: MontserratRegular;
+  src: url("./assets/fonts/Montserrat/static/Montserrat-Regular.ttf");
+}
+
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  scroll-padding-top: 70px;
+}
+.App {
+  width: 100vw;
+  height: 100vh;
+  background-color: $color-background;
+}
