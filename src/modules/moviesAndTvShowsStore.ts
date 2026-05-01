@@ -15,6 +15,9 @@ class MoviesAndTvShowsStore {
   searchedMovies: Movie[] = [];
   searchedTvShows: TvShow[] = [];
 
+  mediaTrailerKey: string | null = null;
+  similarMedia: (Movie | TvShow)[] = [];
+
   isLoadingTrendingMovies: boolean = false;
   isLoadingTopRatedMovies: boolean = false;
 
@@ -26,6 +29,9 @@ class MoviesAndTvShowsStore {
 
   isSearchingMovies: boolean = false;
   isSearchingTvShows: boolean = false;
+
+  isLoadingMediaTrailer: boolean = false;
+  isLoadingSimilarMedia: boolean = false;
 
   trendingMoviesPage: number = 1;
   topRatedMoviesPage: number = 1;
@@ -152,6 +158,19 @@ class MoviesAndTvShowsStore {
       this.searchedTvShowsPage = 1;
     }
     this.isSearchingTvShows = false;
+  }
+  async getMediaTrailer(type: "movie" | "tv", id: string) {
+    this.isLoadingMediaTrailer = true;
+    const response = await moviesAndTvShowsService.getMediaTrailer(type, id);
+    this.mediaTrailerKey = response;
+    this.isLoadingMediaTrailer = false;
+  }
+
+  async getSimilarMedia(type: "movie" | "tv", id: string) {
+    this.isLoadingSimilarMedia = true;
+    const response = await moviesAndTvShowsService.getSimilarMedia(type, id);
+    this.similarMedia = response;
+    this.isLoadingSimilarMedia = false;
   }
 }
 

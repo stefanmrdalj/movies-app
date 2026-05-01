@@ -40,3 +40,36 @@ export interface TvShowsResponse {
   total_pages: number;
   total_results: number;
 }
+export interface Genre {
+  id: number;
+  name: string;
+}
+
+export interface DetailsData {
+  id: number;
+  title?: string;
+  name?: string;
+  overview: string;
+  backdrop_path: string | null;
+  poster_path: string | null;
+  genres: Genre[];
+}
+
+export interface CastMember {
+  id: number;
+  name: string;
+  profile_path: string | null;
+}
+
+export interface DetailsPageData {
+  details: DetailsData | null;
+  casts: CastMember[];
+}
+
+export interface Video {
+  id: string;
+  key: string;
+  name: string;
+  site: string;
+  type: string;
+}

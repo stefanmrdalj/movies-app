@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import { moviesAndTvShowsStore } from "../modules/moviesAndTvShowsStore";
 import "../style/content.scss";
 import MovieSwiper from "./movieSwiper";
+import { NavLink } from "react-router-dom";
 
 const Content = observer(() => {
   useEffect(() => {
@@ -27,14 +28,14 @@ const Content = observer(() => {
         </div>
         <div className="content-cards">
           {moviesAndTvShowsStore.trendingMovies.map((movie) => (
-            <div className="card" key={movie.id}>
+            <NavLink to={`/details/movie/${movie.id}`} className="card" key={movie.id}>
               <div className="card-photo">
                 <img src={movie.poster_path} alt="movie-poster" />
               </div>
               <div className="card-title">
                 <h3>{movie.title}</h3>
               </div>
-            </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -49,14 +50,14 @@ const Content = observer(() => {
         </div>
         <div className="content-cards">
           {moviesAndTvShowsStore.topRatedMovies.map((movie) => (
-            <div className="card" key={movie.id}>
+            <NavLink to={`/details/movie/${movie.id}`} className="card" key={movie.id}>
               <div className="card-photo">
                 <img src={movie.poster_path} alt="movie-poster" />
               </div>
               <div className="card-title">
                 <h3>{movie.title}</h3>
               </div>
-            </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -71,14 +72,14 @@ const Content = observer(() => {
         </div>
         <div className="content-cards">
           {moviesAndTvShowsStore.trendingTvShows.map((tvShow) => (
-            <div className="card" key={tvShow.id}>
+            <NavLink to={`/details/tv/${tvShow.id}`} className="card" key={tvShow.id}>
               <div className="card-photo">
                 <img src={tvShow.poster_path} alt="tvShow-poster" />
               </div>
               <div className="card-title">
                 <h3>{tvShow.name}</h3>
               </div>
-            </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -93,14 +94,14 @@ const Content = observer(() => {
         </div>
         <div className="content-cards">
           {moviesAndTvShowsStore.topRatedTvShows.map((tvShow) => (
-            <div className="card" key={tvShow.id}>
+            <NavLink to={`/details/tv/${tvShow.id}`} className="card" key={tvShow.id}>
               <div className="card-photo">
                 <img src={tvShow.poster_path} alt="tvShow-poster" />
               </div>
               <div className="card-title">
                 <h3>{tvShow.name}</h3>
               </div>
-            </div>
+            </NavLink>
           ))}
         </div>
       </div>

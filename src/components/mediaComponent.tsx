@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../style/mediaComponent.scss";
 import { moviesAndTvShowsStore } from "../modules/moviesAndTvShowsStore";
 import { observer } from "mobx-react-lite";
+import { NavLink } from "react-router-dom";
 
 interface MediaComponentProps {
   type: "movie" | "tv";
@@ -11,8 +12,6 @@ interface MediaComponentProps {
 const MediaComponent = observer(({ type, title }: MediaComponentProps) => {
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
-
-  //   const data = type === "movie" ? moviesAndTvShowsStore.allMovies : moviesAndTvShowsStore.allTvShows;
 
   const isSearching = debouncedSearch.trim().length > 0;
 
@@ -78,14 +77,14 @@ const MediaComponent = observer(({ type, title }: MediaComponentProps) => {
         </div>
         <div className="cards">
           {data.map((item) => (
-            <div className="card" key={item.id}>
+            <NavLink to={`/details/${"title" in item ? "movie" : "tv"}/${item.id}`} className="card" key={item.id}>
               <div className="card-photo">
                 <img src={item.poster_path} alt="" />
               </div>
               <div>
                 <h3>{"title" in item ? item.title : item.name}</h3>
               </div>
-            </div>
+            </NavLink>
           ))}
         </div>
         <div className="media-button">
