@@ -1,4 +1,5 @@
 import "./App.scss";
+import DetailsPage from "./pages/detailsPage";
 import Home from "./pages/homePage";
 import Movies from "./pages/moviesPage";
 import TvShows from "./pages/tvShowsPage";
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="shows" element={<TvShows />} />
+          <Route path="/details/:type/:id" element={<DetailsPage />} />
         </Routes>
       </BrowserRouter>
     </div>

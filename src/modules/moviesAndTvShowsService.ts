@@ -40,6 +40,7 @@ class MoviesAndTvShowsService {
       poster_path: tvShow.poster_path ? `${IMG_BASE}${tvShow.poster_path}` : "undefined",
     }));
   }
+
   async getTopRatedTvShows(page: number = 1): Promise<TvShow[]> {
     const [error, response] = await to(moviesAndTvShowsRepository.getTopRatedTvShows(page));
     if (error) {
@@ -51,6 +52,7 @@ class MoviesAndTvShowsService {
       poster_path: tvShows.poster_path ? `${IMG_BASE}${tvShows.poster_path}` : "undefined",
     }));
   }
+
   async getAllMovies(page: number = 1): Promise<Movie[]> {
     const [error, response] = await to(moviesAndTvShowsRepository.getAllMovies(page));
 
@@ -63,6 +65,7 @@ class MoviesAndTvShowsService {
       poster_path: movie.poster_path ? `${IMG_BASE}${movie.poster_path}` : "undefined",
     }));
   }
+
   async getAllTvShows(page: number = 1): Promise<TvShow[]> {
     const [error, response] = await to(moviesAndTvShowsRepository.getAllTvShows(page));
     if (error) {
@@ -74,6 +77,7 @@ class MoviesAndTvShowsService {
       poster_path: tvShow.poster_path ? `${IMG_BASE}${tvShow.poster_path}` : "undefined",
     }));
   }
+
   async searchMovies(query: string, page: number = 1): Promise<Movie[]> {
     const [error, response] = await to(moviesAndTvShowsRepository.searchMovies(query, page));
     if (error) {
@@ -85,6 +89,7 @@ class MoviesAndTvShowsService {
       poster_path: movie.poster_path ? `${IMG_BASE}${movie.poster_path}` : "undefined",
     }));
   }
+
   async searchTvShows(query: string, page: number = 1): Promise<TvShow[]> {
     const [error, response] = await to(moviesAndTvShowsRepository.searchTvShows(query, page));
     if (error) {
@@ -94,6 +99,28 @@ class MoviesAndTvShowsService {
     return response.data.results.map((tv) => ({
       ...tv,
       poster_path: tv.poster_path ? `${IMG_BASE}${tv.poster_path}` : "undefined",
+    }));
+  }
+
+  async getMediaTrailer(type: "movie" | "tv", id: string): Promise<string | null> {
+    const [error, response] = await to(moviesAndTvShowsRepository.getMediaVideos(type, id));
+    if (error) {
+      console.error("Error fetching trailer:", error);
+      return null;
+    }
+    const trailer = response.data.results.find((video) => video.type === "Trailer" && video.site === "YouTube");
+    return trailer ? trailer.key : null;
+  }
+
+  async getSimilarMedia(type: "movie" | "tv", id: string): Promise<(Movie | TvShow)[]> {
+    const [error, response] = await to(moviesAndTvShowsRepository.getSimilarMedia(type, id));
+    if (error) {
+      console.error("Error fetching similar media:", error);
+      return [];
+    }
+    return response.data.results.map((item) => ({
+      ...item,
+      poster_path: item.poster_path ? `${IMG_BASE}${item.poster_path}` : undefined,
     }));
   }
 }

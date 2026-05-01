@@ -1,6 +1,6 @@
 import axiosInstance from "../api/axiosInstance";
 import type { AxiosResponse } from "axios";
-import type { MoviesResponse, TvShowsResponse } from "./types";
+import type { MoviesResponse, TvShowsResponse, Video } from "./types";
 
 class MoviesAndTvShowsRepo {
   getTrendingMovies(page: number = 1): Promise<AxiosResponse<MoviesResponse>> {
@@ -42,6 +42,12 @@ class MoviesAndTvShowsRepo {
     return axiosInstance.get("/search/tv", {
       params: { query, page },
     });
+  }
+  getMediaVideos(type: "movie" | "tv", id: string): Promise<AxiosResponse<{ results: Video[] }>> {
+    return axiosInstance.get(`/${type}/${id}/videos`);
+  }
+  getSimilarMedia(type: "movie" | "tv", id: string): Promise<AxiosResponse<MoviesResponse | TvShowsResponse>> {
+    return axiosInstance.get(`/${type}/${id}/similar`);
   }
 }
 
