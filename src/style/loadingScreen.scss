@@ -1,0 +1,51 @@
+@use "./colors.scss" as *;
+
+.loadingScreen {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-background;
+
+  .loadingScreen-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-40%);
+    color: $color-text;
+    font-family: MontserratRegular;
+    .loadingScreen-title {
+      text-align: center;
+      font-size: 30px;
+      letter-spacing: 8px;
+
+      :nth-child(2) {
+        color: $color-red;
+      }
+    }
+    p {
+      opacity: 0.6;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 65%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 40px;
+
+      background: radial-gradient(
+        ellipse at center,
+        rgba(255, 0, 0, 0.6) 0%,
+        rgba(255, 0, 0, 0.3) 40%,
+        rgba(255, 0, 0, 0.1) 70%,
+        transparent 100%
+      );
+
+      filter: blur(20px);
+      opacity: 0.8;
+    }
+  }
+}

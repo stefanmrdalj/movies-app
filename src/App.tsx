@@ -1,14 +1,36 @@
 import "./App.scss";
+import ScrollToTop from "./components/scrollToTop";
 import DetailsPage from "./pages/detailsPage";
 import Home from "./pages/homePage";
 import Movies from "./pages/moviesPage";
 import TvShows from "./pages/tvShowsPage";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { useEffect, useState } from "react";
+import LoadingScreen from "./components/loadingScreen";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const hasSeenLoadingScreen = sessionStorage.getItem("hasSeenLoadingScreen");
+    if (!hasSeenLoadingScreen) {
+      setIsLoading(true);
+
+      setTimeout(() => {
+        setIsLoading(false);
+        sessionStorage.setItem("hasSeenLoadingScreen", "true");
+      }, 2000);
+    }
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />

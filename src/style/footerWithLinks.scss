@@ -3,22 +3,16 @@
 .footer-with-links {
   width: 100%;
   min-height: 400px;
-  //   background: url("../assets/photos/footer-bg.jpg");
   box-sizing: border-box;
   display: grid;
   grid-template-rows: 30% 70%;
   grid-template-columns: 50% 50%;
   background:
-    linear-gradient(
-      to bottom,
-      black 0%,
-      rgba(0, 0, 0, 0.9) 5%,
-      rgba(0, 0, 0, 0.4) 10%,
-      transparent 80%
-    ),
+    linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.9) 5%, rgba(0, 0, 0, 0.4) 10%, transparent 80%),
     url("../assets/photos/footer-bg.jpg");
   background-size: cover;
   background-position: center;
+  margin-bottom: 60px;
 
   .links-title {
     color: $color-text;
@@ -37,9 +31,10 @@
   .links-container {
     padding-left: 30px;
     box-sizing: border-box;
+    padding-top: 30px;
 
     div {
-      margin-bottom: 10px;
+      margin-bottom: 30px;
       a {
         color: $color-text;
         font-family: MontserratRegular;

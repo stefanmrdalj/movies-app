@@ -33,6 +33,8 @@ class MoviesAndTvShowsStore {
   isLoadingMediaTrailer: boolean = false;
   isLoadingSimilarMedia: boolean = false;
 
+  isHomePageTrailerModalOpen: boolean = false;
+
   trendingMoviesPage: number = 1;
   topRatedMoviesPage: number = 1;
 
@@ -163,6 +165,14 @@ class MoviesAndTvShowsStore {
     this.isLoadingMediaTrailer = true;
     const response = await moviesAndTvShowsService.getMediaTrailer(type, id);
     this.mediaTrailerKey = response;
+    this.isLoadingMediaTrailer = false;
+  }
+
+  async getHomePageTrailer(type: "movie" | "tv", id: string) {
+    this.isLoadingMediaTrailer = true;
+    const response = await moviesAndTvShowsService.getMediaTrailer(type, id);
+    this.mediaTrailerKey = response;
+    this.isHomePageTrailerModalOpen = true;
     this.isLoadingMediaTrailer = false;
   }
 

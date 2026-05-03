@@ -1,5 +1,7 @@
 import "../style/footerWithLinks.scss";
 import logo from "../assets/photos/logo.png";
+import { NavLink } from "react-router-dom";
+import { EXTERNAL_LINKS } from "../config/navigationLinks";
 
 const FooterWithLinks = () => {
   return (
@@ -10,39 +12,30 @@ const FooterWithLinks = () => {
       </div>
       <div className="links-container">
         <div>
-          <a href="">Home</a>
+          <NavLink to="/">Home</NavLink>
         </div>
         <div>
-          <a href="">Contact us</a>
+          <NavLink to="/movies">Movies</NavLink>
         </div>
         <div>
-          <a href="">Terms of service</a>
-        </div>
-        <div>
-          <a href="">About us</a>
-        </div>
-        <div>
-          <a href="">You must watch</a>
-        </div>
-        <div>
-          <a href="">Recent release</a>
-        </div>
-        <div>
-          <a href="">Top IMDB</a>
+          <NavLink to="/shows">Tv shows</NavLink>
         </div>
       </div>
       <div className="links-container">
         <div>
-          <a href="">Live</a>
+          <a href={EXTERNAL_LINKS.imdbWhatToWatch} target="_blank" rel="noopener noreferrer">
+            What to watch
+          </a>
         </div>
         <div>
-          <a href="">FAQ</a>
+          <a href={EXTERNAL_LINKS.imdbTopMovies} target="_blank" rel="noopener noreferrer">
+            Top IMDB movies
+          </a>
         </div>
         <div>
-          <a href="">Premium</a>
-        </div>
-        <div>
-          <a href="">Privacy policy</a>
+          <a href={EXTERNAL_LINKS.imdbTopTvShows} target="_blank" rel="noopener noreferrer">
+            Top IMDB Tv shows
+          </a>
         </div>
       </div>
     </div>
