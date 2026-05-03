@@ -5,8 +5,20 @@ import "swiper/css";
 
 import { observer } from "mobx-react-lite";
 import { moviesAndTvShowsStore } from "../modules/moviesAndTvShowsStore";
+import { useEffect } from "react";
 
 const MovieSwiper = observer(() => {
+  useEffect(() => {
+    if (moviesAndTvShowsStore.isHomePageTrailerModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [moviesAndTvShowsStore.isHomePageTrailerModalOpen]);
   return (
     <div className="movieSwiper">
       <Swiper
@@ -30,12 +42,27 @@ const MovieSwiper = observer(() => {
               </div>
               <div className="slide-description">{movie.overview}</div>
               <div className="slide-button">
-                <button>Watch trailer</button>
+                <button onClick={() => moviesAndTvShowsStore.getHomePageTrailer("movie", String(movie.id))}>
+                  Watch trailer
+                </button>
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+      {moviesAndTvShowsStore.isHomePageTrailerModalOpen && (
+        <div className="trailerModal">
+          <div className="trailerModal-content">
+            <button onClick={() => (moviesAndTvShowsStore.isHomePageTrailerModalOpen = false)}>Close</button>
+
+            <iframe
+              src={`https://www.youtube.com/embed/${moviesAndTvShowsStore.mediaTrailerKey}`}
+              title="Trailer"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 });
