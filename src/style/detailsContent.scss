@@ -66,7 +66,7 @@
           box-sizing: border-box;
 
           span {
-            font-size: 12px;
+            font-size: 11px;
             border: 1px solid $color-text;
             padding: 4px 8px;
             border-radius: 15px;
@@ -97,6 +97,7 @@
 
             .detailsContent-castCard {
               min-width: 80px;
+              max-width: 80px;
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -112,6 +113,10 @@
               p {
                 font-size: 11px;
                 text-align: center;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
               }
             }
           }
@@ -125,6 +130,7 @@
     color: $color-text;
     font-family: MontserratRegular;
     padding: 20px;
+    box-sizing: border-box;
 
     h3 {
       margin: 0 0 15px;
@@ -172,9 +178,221 @@
       margin-top: 8px;
       font-size: 10px;
       line-height: 1.2;
-
+      overflow: hidden;
       h4 {
         margin: 0;
+      }
+    }
+  }
+}
+@media (min-width: 768px) {
+  .detailsPageContent {
+    .detailsContent-overlay {
+      .detailsContent-wrapper {
+        .detailsContent-info {
+          .detailsContent-title {
+            h1 {
+              font-size: 40px;
+              margin: 0;
+            }
+          }
+          .detailsContent-genre {
+            gap: 10px;
+            span {
+              font-size: 13px;
+              border: 1px solid $color-text;
+              padding: 5px 9px;
+              border-radius: 15px;
+            }
+          }
+          .detailsContent-description {
+            p {
+              font-size: 15px;
+              line-height: 1.5;
+              opacity: 0.9;
+            }
+          }
+          .detailsContent-casts {
+            .detailsContent-castList {
+              gap: 16px;
+
+              .detailsContent-castCard {
+                min-width: 100px;
+                max-width: 100px;
+                img {
+                  width: 100px;
+                  height: 100px;
+                }
+                p {
+                  font-size: 13px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .detailsTrailer {
+      iframe {
+        width: 85%;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+    .detailsSimilar {
+      .detailsSimilar-card {
+        .detailsSimilar-cardTitle {
+          margin-top: 9px;
+          font-size: 12px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .detailsPageContent {
+    padding-bottom: 20px;
+
+    .detailsContent-overlay {
+      .detailsContent-wrapper {
+        .detailsContent-info {
+          .detailsContent-title {
+            h1 {
+              font-size: 45px;
+              margin: 0;
+            }
+          }
+          .detailsContent-genre {
+            gap: 10px;
+            span {
+              font-size: 15px;
+              border: 1px solid $color-text;
+              padding: 5px 9px;
+              border-radius: 15px;
+            }
+          }
+          .detailsContent-description {
+            p {
+              font-size: 16px;
+              line-height: 1.5;
+              opacity: 0.9;
+            }
+          }
+          .detailsContent-casts {
+            .detailsContent-castList {
+              gap: 20px;
+
+              .detailsContent-castCard {
+                p {
+                  font-size: 15px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .detailsTrailer {
+      h3 {
+        margin-bottom: 25px;
+      }
+
+      iframe {
+        width: 75%;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+    .detailsSimilar {
+      .detailsSimilar-card {
+        .detailsSimilar-cardTitle {
+          margin-top: 9px;
+          font-size: 14px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .detailsPageContent {
+    .detailsContent-overlay {
+      .detailsContent-wrapper {
+        .detailsContent-info {
+          .detailsContent-title {
+            h1 {
+              font-size: 50px;
+              margin: 0;
+            }
+          }
+          .detailsContent-genre {
+            gap: 12px;
+            span {
+              font-size: 17px;
+              border: 1px solid $color-text;
+              padding: 7px 11px;
+              border-radius: 20px;
+            }
+          }
+          .detailsContent-description {
+            p {
+              font-size: 20px;
+              line-height: 1.5;
+              opacity: 0.9;
+            }
+          }
+          .detailsContent-casts {
+            .detailsContent-castList {
+              gap: 20px;
+
+              .detailsContent-castCard {
+                p {
+                  font-size: 17px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .detailsTrailer {
+      h3 {
+        font-size: 25px;
+      }
+      iframe {
+        width: 70%;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+
+    .detailsSimilar {
+      h3 {
+        font-size: 25px;
+      }
+
+      .detailsSimilar-cards {
+        gap: 20px;
+      }
+
+      .detailsSimilar-card {
+        min-width: 180px;
+        max-width: 180px;
+
+        .detailsSimilar-cardTitle {
+          margin-top: 10px;
+          font-size: 16px;
+          line-height: 1.3;
+          height: 42px;
+          overflow: hidden;
+        }
+      }
+
+      .detailsSimilar-cardPhoto {
+        height: 230px;
       }
     }
   }

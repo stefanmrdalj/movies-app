@@ -34,11 +34,95 @@
     padding-top: 30px;
 
     div {
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       a {
         color: $color-text;
         font-family: MontserratRegular;
         text-decoration: none;
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-with-links {
+    padding-top: 30px;
+    box-sizing: border-box;
+
+    .links-container {
+      padding-left: 60px;
+      div {
+        margin-bottom: 30px;
+        a {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .footer-with-links {
+    margin-bottom: 0px;
+
+    .links-container {
+      padding-left: 100px;
+      div {
+        margin-bottom: 33px;
+        a {
+          font-size: 19px;
+
+          &:hover {
+            color: $color-red-hover;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1440px) {
+  .footer-with-links {
+    margin-bottom: 0px;
+    min-height: 500px;
+
+    .links-title {
+      font-size: 30px;
+      img {
+        height: 100px;
+      }
+    }
+
+    .links-container {
+      padding-left: 100px;
+      div {
+        margin-bottom: 37px;
+        a {
+          font-size: 21px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .footer-with-links {
+    margin-bottom: 0px;
+    min-height: 550px;
+
+    .links-title {
+      font-size: 30px;
+      img {
+        height: 100px;
+      }
+    }
+
+    .links-container {
+      padding-left: 120px;
+      div {
+        margin-bottom: 39px;
+        a {
+          font-size: 23px;
+        }
       }
     }
   }

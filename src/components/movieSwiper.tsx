@@ -37,15 +37,23 @@ const MovieSwiper = observer(() => {
                   : "none",
               }}
             >
-              <div className="slide-title">
-                <h2>{movie.title}</h2>
+              <div className="slide-content">
+                <div className="slide-title">
+                  <h2>{movie.title}</h2>
+                </div>
+                <div className="slide-description">{movie.overview}</div>
+                <div className="slide-button">
+                  <button onClick={() => moviesAndTvShowsStore.getHomePageTrailer("movie", String(movie.id))}>
+                    Watch trailer
+                  </button>
+                  <button>About</button>
+                </div>
               </div>
-              <div className="slide-description">{movie.overview}</div>
-              <div className="slide-button">
-                <button onClick={() => moviesAndTvShowsStore.getHomePageTrailer("movie", String(movie.id))}>
-                  Watch trailer
-                </button>
-              </div>
+              {movie.poster_path && (
+                <div className="slide-poster">
+                  <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                </div>
+              )}
             </div>
           </SwiperSlide>
         ))}

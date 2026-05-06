@@ -2,6 +2,7 @@
 
 .movieSwiper {
   height: 100%;
+  box-sizing: border-box;
 
   .swiper {
     height: 100%;
@@ -42,46 +43,53 @@
             );
             pointer-events: none;
           }
-
-          .slide-title {
+          .slide-content {
             width: 80%;
             margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow-wrap: break-word;
-            padding-top: 30px;
 
-            h2 {
-              margin: 0px;
-              font-size: 40px;
+            .slide-title {
+              display: flex;
+              overflow-wrap: break-word;
+              margin-bottom: 20px;
+
+              h2 {
+                margin: 0px;
+                font-size: 40px;
+              }
             }
-          }
-          .slide-description {
-            width: 80%;
-            margin: auto;
-            padding: 0px 30px;
-            position: relative;
-            z-index: 1;
-            margin-top: auto;
-          }
-          .slide-button {
-            width: 80%;
-            margin: auto;
-            padding-top: 20px;
-            padding-bottom: 40px;
-
-            button {
-              background-color: $color-red;
-              border: none;
-              color: $color-text;
-              padding: 10px 24px;
-              border-radius: 20px;
-              font-family: MontserratRegular;
-              box-shadow: 0px 0px 20px 2px $color-red;
+            .slide-description {
               position: relative;
               z-index: 1;
+              margin-top: auto;
+              font-size: 15px;
             }
+            .slide-button {
+              padding-top: 20px;
+              padding-bottom: 40px;
+
+              button {
+                background-color: $color-red;
+                border: none;
+                color: $color-text;
+                padding: 10px 24px;
+                border-radius: 20px;
+                font-family: MontserratRegular;
+                box-shadow: 0px 0px 20px 2px $color-red;
+                position: relative;
+                z-index: 1;
+              }
+              button:nth-child(2) {
+                padding: 10px 24px;
+                border-radius: 20px;
+                border: 1px solid $color-text;
+                background-color: transparent;
+                box-shadow: none;
+                margin-left: 10px;
+              }
+            }
+          }
+          .slide-poster {
+            display: none;
           }
         }
       }
@@ -118,6 +126,145 @@
       color: $color-text;
       padding: 6px 12px;
       border-radius: 8px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .movieSwiper {
+    .swiper {
+      .swiper-wrapper {
+        .swiper-slide {
+          .slide {
+            .slide-content {
+              .slide-title {
+                h2 {
+                  margin: 0px;
+                  font-size: 35px;
+                }
+              }
+              .slide-description {
+                font-size: 18px;
+              }
+              .slide-button {
+                button {
+                  padding: 12px 26px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .movieSwiper {
+    .swiper {
+      .swiper-wrapper {
+        .swiper-slide {
+          .slide {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+            padding: 0 9%;
+            box-sizing: border-box;
+
+            .slide-content {
+              width: 55%;
+              margin: 0;
+              padding: 0;
+              margin-top: 0;
+              padding-bottom: 0;
+              position: relative;
+              z-index: 1;
+
+              .slide-title {
+                h2 {
+                  margin: 0px;
+                  font-size: 45px;
+                }
+              }
+              .slide-description {
+                font-size: 20px;
+              }
+              .slide-button {
+                button {
+                  &:hover {
+                    background-color: $color-red-hover;
+                    box-shadow: 0px 0px 20px 4px $color-red;
+                  }
+                }
+                button:nth-child(2) {
+                  &:hover {
+                    background-color: $color-text;
+                    color: $color-red;
+                    font-weight: bold;
+                    box-shadow: none;
+                  }
+                }
+              }
+            }
+
+            .slide-poster {
+              display: block;
+              width: 24%;
+              margin: 0;
+              padding: 0;
+              position: relative;
+              z-index: 1;
+
+              img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 2 / 3;
+                object-fit: cover;
+                border-radius: 20px;
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .movieSwiper {
+    .swiper {
+      .swiper-wrapper {
+        .swiper-slide {
+          .slide {
+            .slide-content {
+              .slide-title {
+                h2 {
+                  margin: 0px;
+                  font-size: 50px;
+                }
+              }
+              .slide-description {
+                font-size: 22px;
+              }
+              .slide-button {
+                button {
+                  padding: 14px 28px;
+                  font-size: 19px;
+                  border-radius: 25px;
+                }
+                button:nth-child(2) {
+                  padding: 14px 28px;
+                  border-radius: 25px;
+                  margin-left: 12px;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

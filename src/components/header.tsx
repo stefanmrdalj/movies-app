@@ -1,23 +1,12 @@
 import "../style/header.scss";
 import { navigationLinks } from "../config/navigationLinks";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Logo from "../assets/photos/logo.png";
 import { useEffect, useState } from "react";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
 
-  // useEffect(() => {
-  //   const homeElement = document.querySelector(".home");
-  //   if (!homeElement) return;
-  //   const onScroll = () => {
-  //     setScrolled(homeElement.scrollTop > 50);
-  //   };
-  //   homeElement.addEventListener("scroll", onScroll);
-  //   return () => {
-  //     homeElement.removeEventListener("scroll", onScroll);
-  //   };
-  // }, []);
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -35,9 +24,13 @@ const Header = () => {
       </div>
       <div className="navigation">
         {navigationLinks.map((link) => (
-          <Link key={link.name} to={link.path}>
+          <NavLink
+            key={link.name}
+            to={link.path}
+            className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+          >
             {link.name}
-          </Link>
+          </NavLink>
         ))}
       </div>
     </div>

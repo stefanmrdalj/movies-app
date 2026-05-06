@@ -23,3 +23,9 @@
     border-bottom: 2px solid $color-red;
   }
 }
+
+@media (min-width: 1024px) {
+  .footerNavigation {
+    display: none;
+  }
+}
