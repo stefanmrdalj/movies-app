@@ -6,7 +6,7 @@ const LoadingScreen = () => {
   return (
     <div className="loadingScreen">
       <div className="loadingScreen-wrapper">
-        <Lottie style={{ width: 130, height: 130 }} animationData={loadingAnimation} loop />
+        <Lottie className="movie-animation" animationData={loadingAnimation} loop />
         <div className="loadingScreen-title">
           <span>MOVIES</span>
           <span>APP</span>
