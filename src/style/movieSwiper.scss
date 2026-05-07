@@ -78,13 +78,17 @@
                 position: relative;
                 z-index: 1;
               }
-              button:nth-child(2) {
+              .aboutButton {
                 padding: 10px 24px;
                 border-radius: 20px;
-                border: 1px solid $color-text;
+                border: 1px solid $color-text !important;
                 background-color: transparent;
                 box-shadow: none;
                 margin-left: 10px;
+                text-decoration: none;
+                color: $color-text;
+                position: relative;
+                z-index: 1;
               }
             }
           }
@@ -198,7 +202,7 @@
                     box-shadow: 0px 0px 20px 4px $color-red;
                   }
                 }
-                button:nth-child(2) {
+                .aboutButton {
                   &:hover {
                     background-color: $color-text;
                     color: $color-red;
@@ -255,7 +259,7 @@
                   font-size: 19px;
                   border-radius: 25px;
                 }
-                button:nth-child(2) {
+                .aboutButton {
                   padding: 14px 28px;
                   border-radius: 25px;
                   margin-left: 12px;

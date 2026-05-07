@@ -53,6 +53,7 @@ export interface DetailsData {
   backdrop_path: string | null;
   poster_path: string | null;
   genres: Genre[];
+  vote_average: number;
 }
 
 export interface CastMember {

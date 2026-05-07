@@ -6,6 +6,7 @@ import "../style/detailsContent.scss";
 import { moviesAndTvShowsStore } from "../modules/moviesAndTvShowsStore";
 import { observer } from "mobx-react-lite";
 import { NavLink } from "react-router-dom";
+import { Rating } from "react-simple-star-rating";
 
 const BACKDROP_IMAGE_BASE = "https://image.tmdb.org/t/p/w1280";
 const POSTER_IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
@@ -79,6 +80,11 @@ const DetailsContent = observer(() => {
                 <p>{details.overview}</p>
               </div>
 
+              <div className="detailsContent-ratings">
+                <Rating initialValue={details.vote_average / 2} readonly allowFraction size={20} />
+                <span className="ratings-number">{details.vote_average.toFixed(1)}</span>
+              </div>
+
               <div className="detailsContent-casts">
                 <h3>Casts</h3>
 
@@ -99,7 +105,6 @@ const DetailsContent = observer(() => {
         </div>
       </div>
 
-      {/* TRAILER SECTION */}
       <div className="detailsTrailer">
         <h3>Trailer</h3>
         {moviesAndTvShowsStore.mediaTrailerKey ? (
@@ -113,7 +118,6 @@ const DetailsContent = observer(() => {
         )}
       </div>
 
-      {/* SIMILAR SECTION */}
       <div className="detailsSimilar">
         <h3>Similar</h3>
         <div className="detailsSimilar-cards">
