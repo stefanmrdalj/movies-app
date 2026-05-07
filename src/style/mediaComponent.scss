@@ -6,6 +6,7 @@
   color: $color-text;
   font-family: MontserratRegular;
   padding-bottom: 50px;
+  box-sizing: border-box;
 
   .media-title {
     height: 160px;
@@ -13,10 +14,10 @@
       linear-gradient(to bottom, rgba(0, 0, 0, 0.4), $color-background), url("../assets/photos/footer-bg.jpg");
     background-size: cover;
     background-position: center;
-
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 
     h2 {
       margin-top: 60px;
@@ -117,12 +118,52 @@
 
 @media (min-width: 1024px) {
   .mediaComponent {
+    .media-title {
+      height: 200px;
+
+      h2 {
+        margin-top: 60px;
+        font-size: 25px;
+      }
+    }
     .media-content {
       .cards {
         grid-template-columns: repeat(4, 1fr);
         gap: 30px 22px;
 
         .card {
+          &:hover {
+            h3 {
+              color: $color-red-hover;
+            }
+
+            .card-photo::after {
+              opacity: 1;
+            }
+          }
+
+          .card-photo {
+            position: relative;
+            overflow: hidden;
+
+            &::after {
+              content: "▶";
+              position: absolute;
+              inset: 0;
+              background: rgba(0, 0, 0, 0.6);
+
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              color: $color-red-hover;
+              font-size: 60px;
+
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+          }
+
           h3 {
             font-size: 17px;
             line-height: 1.36;
@@ -152,6 +193,14 @@
 
 @media (min-width: 1440px) {
   .mediaComponent {
+    .media-title {
+      height: 220px;
+
+      h2 {
+        margin-top: 70px;
+        font-size: 28px;
+      }
+    }
     .media-content {
       .cards {
         grid-template-columns: repeat(5, 1fr);
@@ -178,6 +227,14 @@
 
 @media (min-width: 1920px) {
   .mediaComponent {
+    .media-title {
+      height: 220px;
+
+      h2 {
+        margin-top: 75px;
+        font-size: 30px;
+      }
+    }
     .media-content {
       .cards {
         grid-template-columns: repeat(6, 1fr);
@@ -192,7 +249,7 @@
       }
       .searchBar {
         width: 45%;
-        margin: 40px auto;
+        margin: 60px auto;
 
         input {
           height: 42px;

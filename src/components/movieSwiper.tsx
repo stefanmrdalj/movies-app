@@ -6,6 +6,7 @@ import "swiper/css";
 import { observer } from "mobx-react-lite";
 import { moviesAndTvShowsStore } from "../modules/moviesAndTvShowsStore";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 const MovieSwiper = observer(() => {
   useEffect(() => {
@@ -46,7 +47,9 @@ const MovieSwiper = observer(() => {
                   <button onClick={() => moviesAndTvShowsStore.getHomePageTrailer("movie", String(movie.id))}>
                     Watch trailer
                   </button>
-                  <button>About</button>
+                  <NavLink to={`/details/movie/${movie.id}`} className="aboutButton">
+                    About
+                  </NavLink>
                 </div>
               </div>
               {movie.poster_path && (

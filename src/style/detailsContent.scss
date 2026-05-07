@@ -80,6 +80,14 @@
             opacity: 0.9;
           }
         }
+        .detailsContent-ratings {
+          transform: scale(1);
+          transform-origin: left center;
+
+          .ratings-number {
+            margin-left: 5px;
+          }
+        }
 
         .detailsContent-casts {
           margin-top: 10px;
@@ -205,6 +213,9 @@
               border-radius: 15px;
             }
           }
+          .detailsContent-ratings {
+            transform: scale(1.3);
+          }
           .detailsContent-description {
             p {
               font-size: 15px;
@@ -273,6 +284,13 @@
               border-radius: 15px;
             }
           }
+          .detailsContent-ratings {
+            transform: scale(1.6);
+
+            .ratings-number {
+              margin-left: 8px;
+            }
+          }
           .detailsContent-description {
             p {
               font-size: 16px;
@@ -306,11 +324,58 @@
       }
     }
     .detailsSimilar {
-      .detailsSimilar-card {
-        .detailsSimilar-cardTitle {
-          margin-top: 9px;
-          font-size: 14px;
-          overflow: hidden;
+      .detailsSimilar-cards {
+        gap: 20px;
+        padding-bottom: 10px;
+
+        scrollbar-width: thin;
+        scrollbar-color: rgba($color-red, 0.3) transparent;
+
+        &::-webkit-scrollbar {
+          display: block;
+          height: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 10px;
+        }
+        .detailsSimilar-card {
+          &:hover {
+            h4 {
+              color: $color-red-hover;
+            }
+
+            .detailsSimilar-cardPhoto::after {
+              opacity: 1;
+            }
+          }
+          .detailsSimilar-cardPhoto {
+            position: relative;
+
+            &::after {
+              content: "▶";
+              position: absolute;
+              inset: 0;
+              background: rgba(0, 0, 0, 0.6);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: $color-red-hover;
+              font-size: 45px;
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+          }
+          .detailsSimilar-cardTitle {
+            margin-top: 9px;
+            font-size: 14px;
+            overflow: hidden;
+          }
         }
       }
     }
@@ -336,6 +401,9 @@
               padding: 7px 11px;
               border-radius: 20px;
             }
+          }
+          .detailsContent-ratings {
+            transform: scale(1.8);
           }
           .detailsContent-description {
             p {
