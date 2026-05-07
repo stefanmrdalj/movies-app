@@ -49,4 +49,4 @@ https://www.themoviedb.org/settings/api
 
 ## Author
 
-Stefan
+Stefan Mrdalj
